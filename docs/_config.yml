@@ -1,0 +1,8 @@
+remote_theme: pmarsceill/just-the-docs
+title: 'react-error-store'
+baseurl: /
+aux_links:
+  'View on GitHub':
+    - '//github.com/42bv/react-error-store'
+plugins:
+  - jekyll-remote-theme
