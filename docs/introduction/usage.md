@@ -8,14 +8,12 @@ has_toc: true
 nav_order: 4
 ---
 
-# Usage
-
 The idea behind this library is that you to have a way to set errors
 for fields from places very distant from you component, which renders
 the errors. This library will act as a middle man between the components
 that render the errors, and the components that set the errors.
 
-#### Setting errors
+### Setting errors
 
 Here's how you can set errors:
 
@@ -57,7 +55,7 @@ The `errors` are expected to look like this:
 The idea is that each entity has multiple fields where the values
 are the actual errors.
 
-#### Retrieving errors
+### Retrieving errors
 
 This library provides access to the errors for a particular field
 via `useErrorsForValidator`:
@@ -77,7 +75,7 @@ function FormError() {
 };
 ```
 
-#### Clearing all errors
+### Clearing all errors
 
 You can clear the entire store by calling `clearErrors`:
 
@@ -92,7 +90,7 @@ function Form() {
 }
 ```
 
-#### Clearing specific errors for a field
+### Clearing specific errors for a field
 
 You can reset an error by calling `clearErrorsForValidator`:
 

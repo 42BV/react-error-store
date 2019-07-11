@@ -8,9 +8,7 @@ permalink: /install
 nav_order: 2
 ---
 
-# Installation
-
-<q>Note: React 16.8+ is required for Hooks.</q>
+> Note: React 16.8+ is required for Hooks.
 
 ### With npm
 
@@ -18,7 +16,7 @@ nav_order: 2
 npm install @42.nl/react-error-store --save
 ```
 
-### Or with yarn
+### Or with Yarn
 
 ```
 yarn add @42.nl/react-error-store
