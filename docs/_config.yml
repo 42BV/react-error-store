@@ -1,8 +1,6 @@
-remote_theme: pmarsceill/just-the-docs
+remote_theme: 42bv/fortytwo
 title: 'react-error-store'
-baseurl: /
-aux_links:
-  'View on GitHub':
-    - '//github.com/42bv/react-error-store'
+description: 'Storing errors and listening to their changes'
+baseurl: /react-error-store/
 plugins:
   - jekyll-remote-theme
