@@ -12,6 +12,7 @@ Object {
     "unsubscribe": [Function],
   },
   "setErrors": [Function],
+  "useClearErrors": [Function],
   "useErrorsForValidator": [Function],
 }
 `;

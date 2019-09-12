@@ -90,6 +90,18 @@ function Form() {
 }
 ```
 
+The above situation can also be achieved by using the `useClearErrors` 
+hook, which simply calls the `useEffect` for you.
+
+```js
+import React, { useEffect } from 'react';
+import { useClearErrors } from '@42.nl/react-error-store';
+
+function Form() {
+  useClearErrors();
+}
+```
+
 ### Clearing specific errors for a field
 
 You can reset an error by calling `clearErrorsForValidator`:
