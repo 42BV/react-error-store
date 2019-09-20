@@ -54,5 +54,5 @@ export function useErrorsForValidator(validator: string): string[] {
 export function useClearErrors(): void {
   useEffect(() => {
     errorStoreService.clearErrors();
-  });
+  }, []);
 }
