@@ -5,6 +5,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "repository": {
     "type": "git",
@@ -33,12 +36,14 @@
     "eslint": "5.15.1",
     "eslint-config-react-app": "3.0.7",
     "eslint-plugin-react": "7.12.4",
+    "eslint-plugin-react-hooks": "1.7.0",
     "fetch-mock": "7.3.1",
     "husky": "3.0.5",
-    "lint-staged": "9.2.5",
     "jest": "24.5.0",
     "jest-dom": "3.5.0",
+    "lint-staged": "9.2.5",
     "node-fetch": "2.3.0",
+    "np": "5.1.0",
     "prettier": "1.16.4",
     "react": "16.8.6",
     "react-dom": "16.8.6",
@@ -52,7 +57,8 @@
     "ts": "tsc --version && tsc",
     "coverage": "npm test -- --coverage",
     "lint": "eslint \"src/**\"",
-    "prepublish": "rm -rf lib && npm test && npm run ts"
+    "prepublishOnly": "rm -rf lib && npm test && npm run ts",
+    "release": "np --otp"
   },
   "jest": {
     "globals": {
