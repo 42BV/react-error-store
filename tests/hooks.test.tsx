@@ -49,7 +49,12 @@ describe('useClearErrors', () => {
   it('should fetch all errors belong to the validator', async () => {
     jest.spyOn(errorStoreService, 'clearErrors');
 
-    render(<UserForm />);
+    const { rerender } = render(<UserForm />);
+
+    // These calls should not trigger the clearErrors
+    rerender(<UserForm />);
+    rerender(<UserForm />);
+    rerender(<UserForm />);
 
     expect(errorStoreService.clearErrors).toBeCalledTimes(1);
   });
