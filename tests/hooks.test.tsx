@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, wait } from '@testing-library/react';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import { useErrorsForValidator, useClearErrors } from '../src/hooks';
 import { errorStoreService, Errors } from '../src/service';
@@ -10,7 +10,7 @@ afterEach(cleanup);
 describe('useErrorsForValidator', () => {
   function setup({
     component: Component,
-    errors
+    errors,
   }: {
     component: React.ComponentType<any>;
     errors: Errors;
@@ -28,9 +28,9 @@ describe('useErrorsForValidator', () => {
       },
       errors: {
         User: {
-          email: ['email invalid']
-        }
-      }
+          email: ['email invalid'],
+        },
+      },
     });
 
     await wait(() => {
