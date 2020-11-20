@@ -1,17 +1,18 @@
 import set from 'lodash.set';
 import get from 'lodash.get';
 
-export interface EntityError {
+export type EntityError = {
   [field: string]: string[];
-}
+};
 
-export interface Errors {
+export type Errors = {
   [entity: string]: EntityError;
-}
+};
 
 export type SubscriberCallback = (errors: string[]) => void;
+export type SubscriberAllCallback = (errors: Errors) => void;
 
-export interface Subscriber {
+export type SubscriberSpecific = {
   /**
    * The callback to execute when ever the store changes.
    */
@@ -21,14 +22,25 @@ export interface Subscriber {
    * The validator to listen to for example: 'User.email'.
    */
   validator: string;
-}
+};
+
+export type SubscriberAll = {
+  /**
+   * The callback to execute when ever the store changes.
+   */
+  onChange: SubscriberAllCallback;
+
+  validator?: never;
+};
+
+export type Subscriber = SubscriberSpecific | SubscriberAll;
 
 /**
  * Stores the Errors for an application based on entities and their
  * fields.
- * 
+ *
  * The `errors` is an object which looks like this:
- * 
+ *
  * ```js
  * {
  *   User: {
@@ -37,28 +49,28 @@ export interface Subscriber {
  *   Bank: {
  *     owner: ['No owner selected']
  *   }
- * } 
+ * }
  * ```
- * 
+ *
  * The idea is that through a subscription it will be easy to subscribe
  * to the changes on each field.
- * 
+ *
  * To listen to a field you use a `validator` which is a path to an
- * entities field. For example `User.name` is a validator. 
+ * entities field. For example `User.name` is a validator.
  */
 export interface ErrorStoreService {
   /**
    * In one go set all error for all entities and their field.
-   * 
-   * @param errors 
+   *
+   * @param errors
    */
   setErrors(errors: Errors): void;
 
   /**
    * Remove all errors for a specific field in an entity, through a validator.
-   * 
-   * @param validator 
-   * @param error 
+   *
+   * @param validator
+   * @param error
    */
   clearErrorsForValidator(validator: string): void;
 
@@ -69,15 +81,15 @@ export interface ErrorStoreService {
 
   /**
    * Subscribe to changes for a specific validator.
-   * 
-   * @param subscriber 
+   *
+   * @param subscriber
    */
   subscribe(subscriber: Subscriber): void;
 
   /**
    * Unsubscribe to changes.
-   * 
-   * @param subscriber 
+   *
+   * @param subscriber
    */
   unsubscribe(subscriber: Subscriber): void;
 }
@@ -97,7 +109,7 @@ export function makeErrorStoreService(): ErrorStoreService {
 
   function setErrors(nextErrors: Errors): void {
     errors = nextErrors;
-    
+
     informSubscribers();
   }
 
@@ -109,7 +121,7 @@ export function makeErrorStoreService(): ErrorStoreService {
 
   function clearErrors(): void {
     errors = {};
-    
+
     informSubscribers();
   }
 
@@ -120,7 +132,7 @@ export function makeErrorStoreService(): ErrorStoreService {
   }
 
   function unsubscribe(subscriber: Subscriber): void {
-    subscribers = subscribers.filter(s => s !== subscriber);
+    subscribers = subscribers.filter((s) => s !== subscriber);
   }
 
   function informSubscribers(): void {
@@ -128,11 +140,19 @@ export function makeErrorStoreService(): ErrorStoreService {
   }
 
   function informSubscriber(subscriber: Subscriber): void {
-    const errosForValidator = get(errors, subscriber.validator, []);
+    if (determineIfSubscriberIsSubscriberSpecific(subscriber)) {
+      const errorsForValidator = get(errors, subscriber.validator, []);
+      const errorsAsStringArray = errorsForValidator as string[];
+      subscriber.onChange(errorsAsStringArray);
+    } else {
+      subscriber.onChange(errors);
+    }
+  }
 
-    let errorsAsStringArray = errosForValidator as string[];
-
-    subscriber.onChange(errorsAsStringArray);
+  function determineIfSubscriberIsSubscriberSpecific(
+    subscriber: Subscriber
+  ): subscriber is SubscriberSpecific {
+    return subscriber.validator !== undefined;
   }
 }
 
