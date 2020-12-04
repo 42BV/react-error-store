@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, wait } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import { useErrorsForValidator, useClearErrors } from '../src/hooks';
@@ -10,9 +10,9 @@ afterEach(cleanup);
 describe('useErrorsForValidator', () => {
   function setup({
     component: Component,
-    errors,
+    errors
   }: {
-    component: React.ComponentType<any>;
+    component: React.ComponentType<unknown>;
     errors: Errors;
   }) {
     errorStoreService.setErrors(errors);
@@ -21,19 +21,21 @@ describe('useErrorsForValidator', () => {
   }
 
   it('should fetch all errors belong to the validator', async () => {
+    expect.assertions(1);
+
     const { getByTestId } = setup({
-      component: () => {
+      component: function Component() {
         const errors = useErrorsForValidator('User.email');
         return <p data-testid="header">{errors.join(', ')}</p>;
       },
       errors: {
         User: {
-          email: ['email invalid'],
-        },
-      },
+          email: ['email invalid']
+        }
+      }
     });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(getByTestId('header')).toHaveTextContent('email invalid');
     });
   });
@@ -47,6 +49,8 @@ describe('useClearErrors', () => {
   }
 
   it('should fetch all errors belong to the validator', async () => {
+    expect.assertions(1);
+
     jest.spyOn(errorStoreService, 'clearErrors');
 
     const { rerender } = render(<UserForm />);

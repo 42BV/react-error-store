@@ -1,6 +1,8 @@
-
-
-import { clearErrors, setErrors, clearErrorsForValidator } from '../src/actions';
+import {
+  clearErrors,
+  setErrors,
+  clearErrorsForValidator
+} from '../src/actions';
 
 import { errorStoreService } from '../src/service';
 
@@ -14,7 +16,6 @@ describe('clearErrors', () => {
   });
 });
 
-
 describe('clearErrorsForValidator', () => {
   test('that it calls the errorStoreService.clearErrorsForValidator', () => {
     jest.spyOn(errorStoreService, 'clearErrorsForValidator');
@@ -22,14 +23,14 @@ describe('clearErrorsForValidator', () => {
     clearErrorsForValidator('User.name');
 
     expect(errorStoreService.clearErrorsForValidator).toBeCalledTimes(1);
-    expect(errorStoreService.clearErrorsForValidator).toBeCalledWith('User.name');
+    expect(errorStoreService.clearErrorsForValidator).toBeCalledWith(
+      'User.name'
+    );
   });
 });
 
-
 describe('setErrors', () => {
   test('that it calls the errorStoreService.setErrors', () => {
-
     jest.spyOn(errorStoreService, 'setErrors');
 
     const errors = {

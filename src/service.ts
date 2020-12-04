@@ -58,7 +58,7 @@ export type Subscriber = SubscriberSpecific | SubscriberAll;
  * To listen to a field you use a `validator` which is a path to an
  * entities field. For example `User.name` is a validator.
  */
-export interface ErrorStoreService {
+export type ErrorStoreService = {
   /**
    * In one go set all error for all entities and their field.
    *
@@ -92,7 +92,7 @@ export interface ErrorStoreService {
    * @param subscriber
    */
   unsubscribe(subscriber: Subscriber): void;
-}
+};
 
 export function makeErrorStoreService(): ErrorStoreService {
   let errors: Errors = {};
