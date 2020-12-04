@@ -1,6 +1,6 @@
 {
   "name": "@42.nl/react-error-store",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Storing errors and listening to their changes.",
   "files": [
     "lib"
