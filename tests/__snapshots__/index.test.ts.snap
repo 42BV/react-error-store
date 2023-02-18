@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`index barrel: index-barrel 1`] = `
-Object {
+{
   "clearErrors": [Function],
   "clearErrorsForValidator": [Function],
-  "errorStoreService": Object {
+  "errorStoreService": {
     "clearErrors": [Function],
     "clearErrorsForValidator": [Function],
     "setErrors": [Function],
