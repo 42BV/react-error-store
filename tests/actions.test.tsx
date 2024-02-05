@@ -1,7 +1,7 @@
 import {
   clearErrors,
-  setErrors,
-  clearErrorsForValidator
+  clearErrorsForValidator,
+  setErrors
 } from '../src/actions';
 
 import { errorStoreService } from '../src/service';

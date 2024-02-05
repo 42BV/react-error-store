@@ -1,5 +1,4 @@
-import set from 'lodash.set';
-import get from 'lodash.get';
+import { get, set } from 'lodash';
 
 export type EntityError = {
   [field: string]: string[];

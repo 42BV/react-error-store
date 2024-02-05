@@ -1,3 +1,3 @@
-export { useErrorsForValidator, useClearErrors } from './hooks';
+export { clearErrors, clearErrorsForValidator, setErrors } from './actions';
+export { useClearErrors, useErrorsForValidator } from './hooks';
 export { errorStoreService } from './service';
-export { setErrors, clearErrors, clearErrorsForValidator } from './actions';

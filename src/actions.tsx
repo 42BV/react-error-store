@@ -1,4 +1,4 @@
-import { errorStoreService, Errors } from './service';
+import { Errors, errorStoreService } from './service';
 
 /**
  * Remove all errors from the store.

@@ -1,9 +1,8 @@
-import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-
-import { useErrorsForValidator, useClearErrors } from '../src/hooks';
-import { errorStoreService, Errors } from '../src/service';
+import { cleanup, render, waitFor } from '@testing-library/react';
+import React from 'react';
+import { useClearErrors, useErrorsForValidator } from '../src/hooks';
+import { Errors, errorStoreService } from '../src/service';
 
 afterEach(cleanup);
 
