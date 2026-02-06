@@ -50,7 +50,7 @@ describe('useClearErrors', () => {
   it('should fetch all errors belong to the validator', async () => {
     expect.assertions(1);
 
-    jest.spyOn(errorStoreService, 'clearErrors');
+    vi.spyOn(errorStoreService, 'clearErrors');
 
     const { rerender } = render(<UserForm />);
 

@@ -30,22 +30,20 @@
     "@testing-library/jest-dom": "6.4.1",
     "@testing-library/react": "14.2.1",
     "@types/fetch-mock": "7.3.8",
-    "@types/jest": "29.5.12",
     "@types/lodash": "4.14.202",
     "@types/react": "18.2.53",
     "@types/react-test-renderer": "18.0.7",
     "@typescript-eslint/eslint-plugin": "8.54.0",
     "@typescript-eslint/parser": "8.54.0",
+    "@vitest/coverage-v8": "4.0.18",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jest": "29.12.2",
     "eslint-plugin-prettier": "5.5.5",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-vitest": "0.5.4",
     "husky": "9.0.10",
-    "jest": "29.7.0",
-    "jest-environment-jsdom": "29.7.0",
-    "jest-watch-typeahead": "2.2.2",
+    "jsdom": "28.0.0",
     "lint-staged": "15.2.1",
     "np": "9.2.0",
     "prettier": "3.2.5",
@@ -53,8 +51,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-test-renderer": "18.2.0",
-    "ts-jest": "29.1.2",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "vitest": "4.0.18"
   },
   "scripts": {
     "clean": "rm -rf lib",
@@ -65,36 +63,12 @@
     "lint:test": "eslint \"tests/**\" --max-warnings=0",
     "prepare": "husky",
     "release": "npm run tsc && np",
-    "start": "jest --watch --coverage",
+    "start": "vitest --watch",
     "test": "npm run lint && npm run test:ts && npm run test:coverage",
-    "test:coverage": "jest test --no-cache --coverage",
+    "test:coverage": "vitest run --coverage",
     "test:ts": "tsc --version && tsc --noEmit",
     "tsc": "npm run clean && tsc --version && tsc",
     "version": "npm run tsc && jekyll build"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "roots": [
-      "src",
-      "tests"
-    ],
-    "collectCoverageFrom": [
-      "./src/**/*.{ts,tsx}"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "restoreMocks": true,
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ],
-    "testEnvironment": "jsdom"
   },
   "lint-staged": {
     "{src,tests}/**/*.{js,jsx,json,scss,ts,tsx}": [

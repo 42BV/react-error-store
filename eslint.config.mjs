@@ -2,7 +2,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import jest from 'eslint-plugin-jest';
+import vitest from 'eslint-plugin-vitest';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
 
@@ -42,10 +42,10 @@ export default [
   {
     files: ['tests/**/*.{ts,tsx}'],
     plugins: {
-      jest
+      vitest
     },
     rules: {
-      'jest/prefer-expect-assertions': [
+      'vitest/prefer-expect-assertions': [
         'error',
         { onlyFunctionsWithAsyncKeyword: true }
       ]

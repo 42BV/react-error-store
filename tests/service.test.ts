@@ -4,9 +4,9 @@ describe('EnumsService', () => {
   test('setErrors: should set errors and inform subscribers', () => {
     const service = makeErrorStoreService();
 
-    const emailSubscriber = { onChange: jest.fn(), validator: 'User.email' };
-    const nameSubscriber = { onChange: jest.fn(), validator: 'User.name' };
-    const anySubscriber = { onChange: jest.fn() };
+    const emailSubscriber = { onChange: vi.fn(), validator: 'User.email' };
+    const nameSubscriber = { onChange: vi.fn(), validator: 'User.name' };
+    const anySubscriber = { onChange: vi.fn() };
 
     service.subscribe(emailSubscriber);
     service.subscribe(nameSubscriber);
@@ -40,9 +40,9 @@ describe('EnumsService', () => {
   test('clear: should clear all errors and inform subscribers', () => {
     const service = makeErrorStoreService();
 
-    const emailSubscriber = { onChange: jest.fn(), validator: 'User.email' };
-    const nameSubscriber = { onChange: jest.fn(), validator: 'User.name' };
-    const anySubscriber = { onChange: jest.fn() };
+    const emailSubscriber = { onChange: vi.fn(), validator: 'User.email' };
+    const nameSubscriber = { onChange: vi.fn(), validator: 'User.name' };
+    const anySubscriber = { onChange: vi.fn() };
 
     service.subscribe(emailSubscriber);
     service.subscribe(nameSubscriber);
@@ -70,9 +70,9 @@ describe('EnumsService', () => {
   test('clear: should clear all errors and inform subscribers', () => {
     const service = makeErrorStoreService();
 
-    const emailSubscriber = { onChange: jest.fn(), validator: 'User.email' };
-    const nameSubscriber = { onChange: jest.fn(), validator: 'User.name' };
-    const anySubscriber = { onChange: jest.fn() };
+    const emailSubscriber = { onChange: vi.fn(), validator: 'User.email' };
+    const nameSubscriber = { onChange: vi.fn(), validator: 'User.name' };
+    const anySubscriber = { onChange: vi.fn() };
 
     service.subscribe(emailSubscriber);
     service.subscribe(nameSubscriber);
@@ -106,7 +106,7 @@ describe('EnumsService', () => {
     const service = makeErrorStoreService();
 
     // Subscribe a subscriber.
-    const subscriber = { onChange: jest.fn(), validator: 'User.email' };
+    const subscriber = { onChange: vi.fn(), validator: 'User.email' };
     service.subscribe(subscriber);
 
     // It should immediately receive the state after subscribing.

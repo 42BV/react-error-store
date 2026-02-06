@@ -29,7 +29,7 @@ The library has four source files under `src/`:
 ## Testing
 
 - Tests live in `tests/` (not co-located with source).
-- Jest with `ts-jest` preset and `jsdom` environment.
+- Vitest with `jsdom` environment. Config in `vitest.config.ts`.
 - **100% coverage threshold** on branches, functions, lines, and statements — any uncovered code will fail CI.
 - `index.test.ts` uses a snapshot to verify barrel exports.
 - `restoreMocks: true` is configured globally.
@@ -38,4 +38,4 @@ The library has four source files under `src/`:
 
 - Prettier with single quotes, no trailing commas. Enforced via lint-staged + husky on commit.
 - ESLint: TypeScript + React + Prettier integration. Zero warnings allowed (`--max-warnings=0`).
-- Async test functions require `expect.assertions` (jest/prefer-expect-assertions rule).
+- Async test functions require `expect.assertions` (vitest/prefer-expect-assertions rule).

@@ -8,7 +8,7 @@ import { errorStoreService } from '../src/service';
 
 describe('clearErrors', () => {
   test('that it calls the errorStoreService.clearErrors', () => {
-    jest.spyOn(errorStoreService, 'clearErrors');
+    vi.spyOn(errorStoreService, 'clearErrors');
 
     clearErrors();
 
@@ -18,7 +18,7 @@ describe('clearErrors', () => {
 
 describe('clearErrorsForValidator', () => {
   test('that it calls the errorStoreService.clearErrorsForValidator', () => {
-    jest.spyOn(errorStoreService, 'clearErrorsForValidator');
+    vi.spyOn(errorStoreService, 'clearErrorsForValidator');
 
     clearErrorsForValidator('User.name');
 
@@ -31,7 +31,7 @@ describe('clearErrorsForValidator', () => {
 
 describe('setErrors', () => {
   test('that it calls the errorStoreService.setErrors', () => {
-    jest.spyOn(errorStoreService, 'setErrors');
+    vi.spyOn(errorStoreService, 'setErrors');
 
     const errors = {
       User: {
